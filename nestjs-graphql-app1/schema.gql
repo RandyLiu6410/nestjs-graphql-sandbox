@@ -1,0 +1,108 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Comment {
+  """Comment ID"""
+  id: Int!
+
+  """Comment's creator"""
+  creator: User!
+
+  """Comment's content"""
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  """User ID"""
+  id: Int!
+
+  """User's first name"""
+  firstName: String!
+
+  """User's last name"""
+  lastName: String!
+
+  """User's phone"""
+  phone: String!
+
+  """User's email"""
+  email: String!
+
+  """User's comments"""
+  comments: [Comment!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  fullName: String!
+}
+
+type Query {
+  user(id: Int!): User!
+  comment(id: Int!): Comment!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createComment(createCommentInput: CreateCommentInput!): Comment!
+  updateComment(updateCommentInput: UpdateCommentInput!): Comment!
+  removeComment(id: Int!): Comment!
+}
+
+input CreateUserInput {
+  """User's first name"""
+  firstName: String!
+
+  """User's last name"""
+  lastName: String!
+
+  """User's phone"""
+  phone: String!
+
+  """User's email"""
+  email: String!
+}
+
+input UpdateUserInput {
+  """User's first name"""
+  firstName: String!
+
+  """User's last name"""
+  lastName: String!
+
+  """User's phone"""
+  phone: String!
+
+  """User's email"""
+  email: String!
+  id: Int!
+}
+
+input CreateCommentInput {
+  """Creator's ID"""
+  creatorId: Int!
+
+  """Comment's content"""
+  content: String!
+}
+
+input UpdateCommentInput {
+  """Creator's ID"""
+  creatorId: Int
+
+  """Comment's content"""
+  content: String!
+  id: Int!
+}
+
+type Subscription {
+  commentAdded: Comment!
+}
