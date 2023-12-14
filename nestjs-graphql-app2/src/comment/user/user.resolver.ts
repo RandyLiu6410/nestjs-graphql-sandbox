@@ -7,10 +7,7 @@ import { Comment } from '../entities/comment.entity';
 export class UserResolver {
   constructor(private readonly commentService: CommentService) {}
 
-  @ResolveField(() => [Comment], {
-    nullable: true,
-    defaultValue: [],
-  })
+  @ResolveField(() => [Comment])
   public comments(@Parent() user: User) {
     return this.commentService.findAllByCreatorId(user.id);
   }
