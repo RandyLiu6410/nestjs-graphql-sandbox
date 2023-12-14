@@ -1,20 +1,18 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ApolloDriverConfig, ApolloFederationDriver } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
-import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: 'schema.gql',
+      driver: ApolloFederationDriver,
+      autoSchemaFile: {
+        path: 'schema.gql',
+        federation: 2,
+      },
       playground: true,
-      // subscriptions: {
-      //   'graphql-ws': true,
-      // },
-      installSubscriptionHandlers: true,
     }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
@@ -23,7 +21,6 @@ import { CommentModule } from './comment/comment.module';
       synchronize: true,
     }),
     UserModule,
-    CommentModule,
   ],
   controllers: [],
   providers: [],

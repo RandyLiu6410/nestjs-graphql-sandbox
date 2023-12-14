@@ -1,10 +1,8 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { User } from 'src/user/entities/user.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -16,9 +14,9 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Field(() => User, { description: "Comment's creator" })
-  @ManyToOne(() => User, (user) => user.comments)
-  creator: User;
+  @Field(() => Int, { description: "Comment's creator ID" })
+  @Column()
+  creatorId: number;
 
   @Field(() => String, { description: "Comment's content" })
   @Column()

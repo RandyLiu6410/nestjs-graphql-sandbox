@@ -1,0 +1,23 @@
+import { IntrospectAndCompose } from '@apollo/gateway';
+import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
+import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+
+@Module({
+  imports: [
+    GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
+      driver: ApolloGatewayDriver,
+      gateway: {
+        supergraphSdl: new IntrospectAndCompose({
+          subgraphs: [
+            { name: 'users', url: 'http://localhost:8080/graphql' },
+            { name: 'comments', url: 'http://localhost:8081/graphql' },
+          ],
+        }),
+      },
+    }),
+  ],
+  controllers: [],
+  providers: [],
+})
+export class AppModule {}

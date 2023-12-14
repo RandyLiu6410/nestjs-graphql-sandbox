@@ -4,21 +4,17 @@ import { UpdateCommentInput } from './dto/update-comment.input';
 import { Comment } from './entities/comment.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserService } from 'src/user/user.service';
 
 @Injectable()
 export class CommentService {
   constructor(
     @InjectRepository(Comment) private commentsRepository: Repository<Comment>,
-    private userService: UserService,
   ) {}
 
   async create(createCommentInput: CreateCommentInput) {
-    const creatorId = createCommentInput.creatorId;
-
     const comment = new Comment();
     comment.content = createCommentInput.content;
-    comment.creator = await this.userService.findOne(creatorId);
+    comment.creatorId = createCommentInput.creatorId;
 
     await this.commentsRepository.manager.save(comment);
 
@@ -32,9 +28,6 @@ export class CommentService {
   findOne(id: number) {
     return this.commentsRepository.findOne({
       where: { id },
-      relations: {
-        creator: true,
-      },
     });
   }
 
@@ -49,5 +42,13 @@ export class CommentService {
 
   remove(id: number) {
     return this.commentsRepository.delete(id);
+  }
+
+  findAllByCreatorId(creatorId: number) {
+    return this.commentsRepository.find({
+      where: {
+        creatorId,
+      },
+    });
   }
 }

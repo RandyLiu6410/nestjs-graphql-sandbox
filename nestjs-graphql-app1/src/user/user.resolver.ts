@@ -6,6 +6,7 @@ import {
   Int,
   ResolveField,
   Parent,
+  ResolveReference,
 } from '@nestjs/graphql';
 import { UserService } from './user.service';
 import { User } from './entities/user.entity';
@@ -44,5 +45,10 @@ export class UserResolver {
   @ResolveField(() => String)
   fullName(@Parent() user: User) {
     return `${user.firstName} ${user.lastName}`;
+  }
+
+  @ResolveReference()
+  resolveReference(reference: { __typename: string; id: number }) {
+    return this.userService.findOne(reference.id);
   }
 }
