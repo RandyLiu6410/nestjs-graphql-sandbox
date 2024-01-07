@@ -27,6 +27,7 @@ type User {
 }
 
 type Query {
+  comments: [Comment!]!
   comment(id: Int!): Comment!
 }
 

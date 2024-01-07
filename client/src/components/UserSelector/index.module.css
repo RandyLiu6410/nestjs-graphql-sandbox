@@ -1,0 +1,7 @@
+.UserSelector__wrapper {
+    width: 100%;
+}
+
+.UserSelector__avatar {
+    cursor: pointer;
+}

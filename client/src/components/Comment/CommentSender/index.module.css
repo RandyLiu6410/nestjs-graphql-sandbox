@@ -1,0 +1,11 @@
+.CommentSender__wrapper {
+    display: flex;
+    gap: 16px;
+
+    align-items: end;
+}
+
+.CommentSender__input {
+    flex: 1 1 auto;
+}
+

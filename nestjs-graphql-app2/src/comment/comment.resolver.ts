@@ -28,7 +28,7 @@ export class CommentResolver {
   //   return pubSub.asyncIterator('commentAdded');
   // }
 
-  @Query(() => [Comment], { name: 'comment' })
+  @Query(() => [Comment], { name: 'comments' })
   findAll() {
     return this.commentService.findAll();
   }

@@ -1,0 +1,61 @@
+import { User } from "../types/User";
+
+const data: Array<User> = [
+  {
+    id: 1,
+    firstName: "Conny",
+    lastName: "Belfit",
+    fullName: 'Conny Belfit',
+    phone: "4843292247",
+    email: "cbelfit0@vinaora.com",
+    createdAt: "2023-02-25T15:04:33Z",
+    updatedAt: "2023-12-30T09:24:23Z",
+    comments: [],
+  },
+  {
+    id: 2,
+    firstName: "Pier",
+    lastName: "Algeo",
+    fullName: 'Pier Algeo',
+    phone: "4776741995",
+    email: "palgeo1@cocolog-nifty.com",
+    createdAt: "2023-03-25T14:38:45Z",
+    updatedAt: "2023-12-11T17:18:52Z",
+    comments: [],
+  },
+  {
+    id: 3,
+    firstName: "Mathian",
+    lastName: "Gaitskell",
+    fullName: 'Mathian Gaitskell',
+    phone: "6345214924",
+    email: "mgaitskell2@prnewswire.com",
+    createdAt: "2023-01-22T14:09:14Z",
+    updatedAt: "2023-12-06T20:47:19Z",
+    comments: [],
+  },
+  {
+    id: 4,
+    firstName: "Crissie",
+    lastName: "Krystek",
+    fullName: 'Crissie Krystek',
+    phone: "5997721826",
+    email: "ckrystek3@google.ca",
+    createdAt: "2023-07-08T04:26:03Z",
+    updatedAt: "2023-12-13T19:45:54Z",
+    comments: [],
+  },
+  {
+    id: 5,
+    firstName: "Anna-diane",
+    lastName: "Vyvyan",
+    fullName: 'Anna-diane Vyvyan',
+    phone: "5734949202",
+    email: "avyvyan4@nationalgeographic.com",
+    createdAt: "2023-03-13T12:02:43Z",
+    updatedAt: "2023-12-19T13:35:18Z",
+    comments: [],
+  },
+];
+
+export default data
